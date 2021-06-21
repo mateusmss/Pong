@@ -1,5 +1,5 @@
 import java.awt.*;
-
+import java.util.*;
 /**
 	Esta classe representa a bola usada no jogo. A classe princial do jogo (Pong)
 	instancia um objeto deste tipo quando a execução é iniciada.
@@ -12,8 +12,15 @@ public class Ball {
 	private double height;
 	private double speed;
 	private long delta;
+	private double direcaoX;
+	private double direcaoY;
 	GameLib GameLib = new GameLib();
 	java.awt.Color color = new Color(2);
+	Random random = new Random();
+
+
+
+
 	/**
 		Construtor da classe Ball. Observe que quem invoca o construtor desta classe define a velocidade da bola
 		(em pixels por millisegundo), mas não define a direção deste movimento. A direção do movimento é determinada
@@ -34,18 +41,30 @@ public class Ball {
 		this.width = width;
 		this.speed = speed;
 		this.color = color;
+		this.direcaoX = this.direcaoRandom();
+		this.direcaoY = this.direcaoRandom();
 		draw();
+
+
 	}
-
-
+	public double direcaoRandom(){
+		int randomINt = random.nextInt(2);
+		if(randomINt == 0){
+			return -(Math.abs(this.speed));
+		}else{
+			return (Math.abs(this.speed));
+		}
+	}
+	/**
+	Aqui estamos gerando posições aleatórias para os eixos X e Y
+	*/
 	/**
 		Método chamado sempre que a bola precisa ser (re)desenhada.
 	*/
 
 	public void draw(){
-
 		GameLib.setColor(this.color);
-		GameLib.fillRect(cx, cy, width, height);
+		GameLib.fillRect(this.cx, this.cy, this.width, this.height);
 	}
 
 	/**
@@ -55,12 +74,15 @@ public class Ball {
 	*/
 
 	public void update(long delta){
-		this.delta = delta;
+
+		this.cx += delta * this.direcaoX;
+		this.cy += delta * this.direcaoY;
 	}
 
 	/**
 		Método chamado quando detecta-se uma colisão da bola com um jogador.
-
+		Neste método vamos atualizar a posição da bola com as direções primeiramente feitas de maneira aleatória e
+		indo atualizando a cada chamada do método.
 		@param playerId uma string cujo conteúdo identifica um dos jogadores.
 	*/
 
@@ -86,6 +108,9 @@ public class Ball {
 	*/
 
 	public boolean checkCollision(Wall wall){
+
+
+		//verificar a posiç�o e calcular a presença ou n�o da bola dentro do espaço ocupado pela parede
 
 		return false;
 	}
