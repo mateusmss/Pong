@@ -1,0 +1,18 @@
+Como compilar:
+
+Na pasta pongCompleto
+1- javac Ball.java Player.java Score.java
+2- java Pong 0 true
+
+Fonte:
+Eu cursei a matéria de Computação Orientada à Objetos(COO) no ano passado, e como o EP é o mesmo, eu já tinha desenvolvido por completo a classe Score e um pouco da classe Player, que usei de base para fazer o deste ano.
+Então as mudanças que aconteceram nesta versão do Pong foram nas classes Player e principalmente na classe Ball.
+
+Usamos dois vídeos para entender o funcionamento do programa:
+
+https://www.youtube.com/watch?v=EeYJCV-A2hw
+https://youtu.be/oLirZqJFKPE
+
+Integrantes do grupo:
+Mateus Santos Saldanha. NUSP: 10882873
+Gregório. NUSP:

@@ -83,16 +83,23 @@ public class Ball {
 		Método chamado quando detecta-se uma colisão da bola com um jogador.
 		Neste método vamos atualizar a posição da bola com as direções primeiramente feitas de maneira aleatória e
 		indo atualizando a cada chamada do método.
+
 		@param playerId uma string cujo conteúdo identifica um dos jogadores.
 	*/
 
 	public void onPlayerCollision(String playerId){
-
+		if(playerId = "Player 1"){
+			this.direcaoX = Math.abs(this.speed);
+		}
+		if(playerId != "Player 2"){
+			this.direcaoY = -Math.abs(this.speed);
+		}
 	}
 
 	/**
 		Método chamado quando detecta-se uma colisão da bola com uma parede.
-
+		Aqui vamos verificar se o player está colidindo com a bola e caso verdadeira atualizamos a velocidade da bola
+		de maneira positiva, caso contrário de maneira negativa.
 		@param wallId uma string cujo conteúdo identifica uma das paredes da quadra.
 	*/
 
@@ -157,5 +164,9 @@ public class Ball {
 
 		return this.speed;
 	}
-
+/**
+Vídeos utilizados para fazer o algoritmo
+https://www.youtube.com/watch?v=EeYJCV-A2hw
+https://youtu.be/oLirZqJFKPE
+*/
 }
