@@ -161,6 +161,33 @@ public class Ball {
 	*/
 
 	public boolean checkCollision(Player player){
+		double top, bottom, left, right;
+		double pTop, pBottom, pLeft, pRight;
+
+		boolean rCollision, lCollision, checkMATE;
+
+		pTop = player.getCy() - (player.getHeight() / 2);
+		pBottom = player.getCy() + (player.getHeight() / 2);
+		pLeft = player.getCx() - (player.getWidth() / 2);
+		pRight = player.getCx() + (player.getHeight() / 2);
+		top = this.cy - (this.height / 2);
+		bottom = this.cy + (this.height / 2);
+		left = this.cx - (this.width / 2);
+		right = this.cx + (this.width / 2);
+
+		if(left <= pRight)
+			rCollision = true;
+		else rCollision = false;
+		if(right >= pLeft)
+			lCollision = true;
+		else lCollision = false;
+
+		if(top <= pBottom && bottom >= pTop)
+			checkMATE = true;
+		else checkMATE = false;
+
+		if(rCollision && lCollision && checkMATE)
+			return true;
 
 		return false;
 	}
