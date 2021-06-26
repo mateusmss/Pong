@@ -108,6 +108,7 @@ public class Ball {
 		switch (wallId)
 		{
 			case "Bottom":
+<<<<<<< HEAD
 				this.direcaoY = Math.abs(this.speed);
 			case "Top":
 				this.direcaoY = 0 - Math.abs(this.speed);
@@ -115,6 +116,15 @@ public class Ball {
 				this.direcaoX = 0 - Math.abs(this.speed);
 			case "Left":
 				this.direcaoX = Math.abs(this.speed);
+=======
+				this.dY = Math.abs(this.speed);
+			case "Top":
+				this.dY = 0 - Math.abs(this.speed);
+			case "Right":
+				this.dX = 0 - Math.abs(this.speed);
+			case "Left":
+				this.dX = Math.abs(this.speed);
+>>>>>>> f67b0542d7955da9dbc97e987808ce8c8d3a7dc4
 		}
 	}
 
