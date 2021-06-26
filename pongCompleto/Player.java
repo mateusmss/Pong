@@ -6,16 +6,15 @@ import java.awt.*;
 */
 
 public class Player {
-	java.awt.Color color = new Color(2);
-	MyKeyAdapter MykeyAdapter = new MyKeyAdapter();
 	private double cx;
 	private double cy;
 	private double width;
 	private double height;
 	private String id;
 	private double speed;
+	private Color color;
 	private double [] v_limit;
-	private long delta;
+	//private long delta;
 	/**
 		Construtor da classe Player.
 

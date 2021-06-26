@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.util.*;
+import java.util.Random;
 /**
 	Esta classe representa a bola usada no jogo. A classe princial do jogo (Pong)
 	instancia um objeto deste tipo quando a execução é iniciada.
@@ -11,12 +12,11 @@ public class Ball {
 	private double width;
 	private double height;
 	private double speed;
-	private long delta;
+	//private long delta;
 	private double direcaoX;
 	private double direcaoY;
-	GameLib GameLib = new GameLib();
-	java.awt.Color color = new Color(2);
-	Random random = new Random();
+	private Color color;
+
 
 
 
@@ -43,11 +43,11 @@ public class Ball {
 		this.color = color;
 		this.direcaoX = this.direcaoRandom();
 		this.direcaoY = this.direcaoRandom();
-		draw();
 
 
 	}
 	public double direcaoRandom(){
+		Random random = new Random();
 		int randomINt = random.nextInt(2);
 		if(randomINt == 0){
 			return -(Math.abs(this.speed));
@@ -91,8 +91,8 @@ public class Ball {
 		if(playerId == "Player 1"){
 			this.direcaoX = Math.abs(this.speed);
 		}
-		if(playerId != "Player 2"){
-			this.direcaoY = -Math.abs(this.speed);
+		if(playerId != "Player 1"){
+			this.direcaoX = -Math.abs(this.speed);
 		}
 	}
 
@@ -103,8 +103,19 @@ public class Ball {
 		@param wallId uma string cujo conteúdo identifica uma das paredes da quadra.
 	*/
 
-	public void onWallCollision(String wallId){
-
+	public void onWallCollision(String wallId)
+	{
+		switch (wallId)
+		{
+			case "Bottom":
+				this.direcaoY = Math.abs(this.speed);
+			case "Top":
+				this.direcaoY = 0 - Math.abs(this.speed);
+			case "Right":
+				this.direcaoX = 0 - Math.abs(this.speed);
+			case "Left":
+				this.direcaoX = Math.abs(this.speed);
+		}
 	}
 
 	/**
