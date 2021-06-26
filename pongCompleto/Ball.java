@@ -88,7 +88,7 @@ public class Ball {
 	*/
 
 	public void onPlayerCollision(String playerId){
-		if(playerId = "Player 1"){
+		if(playerId == "Player 1"){
 			this.direcaoX = Math.abs(this.speed);
 		}
 		if(playerId != "Player 2"){
