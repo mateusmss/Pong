@@ -103,8 +103,19 @@ public class Ball {
 		@param wallId uma string cujo conteúdo identifica uma das paredes da quadra.
 	*/
 
-	public void onWallCollision(String wallId){
-
+	public void onWallCollision(String wallId)
+	{
+		switch (wallId)
+		{
+			case "Bottom":
+				this.dY = Math.abs(this.speed);
+			case "Top":
+				this.dY = 0 - Math.abs(this.speed);
+			case "Right":
+				this.dX = 0 - Math.abs(this.speed);
+			case "Left":
+				this.dX = Math.abs(this.speed);
+		}
 	}
 
 	/**
