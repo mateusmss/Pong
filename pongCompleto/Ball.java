@@ -1,10 +1,6 @@
 import java.awt.*;
 import java.util.*;
 import java.util.Random;
-/**
-	Esta classe representa a bola usada no jogo. A classe princial do jogo (Pong)
-	instancia um objeto deste tipo quando a execução é iniciada.
-*/
 
 public class Ball {
 	private double cx;
@@ -12,27 +8,10 @@ public class Ball {
 	private double width;
 	private double height;
 	private double speed;
-	//private long delta;
 	private double direcaoX;
 	private double direcaoY;
 	private Color color;
 
-
-
-
-
-	/**
-		Construtor da classe Ball. Observe que quem invoca o construtor desta classe define a velocidade da bola
-		(em pixels por millisegundo), mas não define a direção deste movimento. A direção do movimento é determinada
-		aleatóriamente pelo construtor.
-
-		@param cx coordenada x da posição inicial da bola (centro do retangulo que a representa).
-		@param cy coordenada y da posição inicial da bola (centro do retangulo que a representa).
-		@param width largura do retangulo que representa a bola.
-		@param height altura do retangulo que representa a bola.
-		@param color cor da bola.
-		@param speed velocidade da bola (em pixels por millisegundo).
-	*/
 
 	public Ball(double cx, double cy, double width, double height, Color color, double speed){
 		this.cx = cx;
@@ -44,7 +23,6 @@ public class Ball {
 		this.direcaoX = this.direcaoRandom();
 		this.direcaoY = this.direcaoRandom();
 
-
 	}
 	public double direcaoRandom(){
 		Random random = new Random();
@@ -55,44 +33,23 @@ public class Ball {
 			return (Math.abs(this.speed));
 		}
 	}
-	/**
-	Aqui estamos gerando posições aleatórias para os eixos X e Y
-	*/
-	/**
-		Método chamado sempre que a bola precisa ser (re)desenhada.
-	*/
 
 	public void draw(){
 		GameLib.setColor(this.color);
 		GameLib.fillRect(this.cx, this.cy, this.width, this.height);
 	}
 
-	/**
-		Método chamado quando o estado (posição) da bola precisa ser atualizado.
-
-		@param delta quantidade de millisegundos que se passou entre o ciclo anterior de atualização do jogo e o atual.
-	*/
 
 	public void update(long delta){
-
 		this.cx += delta * this.direcaoX;
 		this.cy += delta * this.direcaoY;
 	}
 
-	/**
-		Método chamado quando detecta-se uma colisão da bola com um jogador.
-		Neste método vamos atualizar a posição da bola com as direções primeiramente feitas de maneira aleatória e
-		indo atualizando a cada chamada do método.
-
-		@param playerId uma string cujo conteúdo identifica um dos jogadores.
-	*/
-
 	public void onPlayerCollision(String playerId){
-		if(playerId == "Player 1"){
+		if(playerId.equals("Player 1")){
 			this.direcaoX = Math.abs(this.speed);
-		}
-		if(playerId != "Player 1"){
-			this.direcaoX = -Math.abs(this.speed);
+		}else if(playerId.equals("Player 2")){
+			this.direcaoX = 0 - Math.abs(this.speed);
 		}
 	}
 
@@ -107,24 +64,14 @@ public class Ball {
 	{
 		switch (wallId)
 		{
-			case "Bottom":
-<<<<<<< HEAD
-				this.direcaoY = Math.abs(this.speed);
 			case "Top":
-				this.direcaoY = 0 - Math.abs(this.speed);
-			case "Right":
-				this.direcaoX = 0 - Math.abs(this.speed);
+				this.direcaoY = Math.abs(this.speed);
+			case "Bottom":
+				this.direcaoY = - Math.abs(this.speed);
 			case "Left":
 				this.direcaoX = Math.abs(this.speed);
-=======
-				this.dY = Math.abs(this.speed);
-			case "Top":
-				this.dY = 0 - Math.abs(this.speed);
 			case "Right":
-				this.dX = 0 - Math.abs(this.speed);
-			case "Left":
-				this.dX = Math.abs(this.speed);
->>>>>>> f67b0542d7955da9dbc97e987808ce8c8d3a7dc4
+				this.direcaoX = - Math.abs(this.speed);
 		}
 	}
 
@@ -171,15 +118,8 @@ public class Ball {
 
 		//verificar a posiç�o e calcular a presença ou n�o da bola dentro do espaço ocupado pela parede
 
-		return false;
+		return false;*/
 	}
-
-	/**
-		Método que verifica se houve colisão da bola com um jogador.
-
-		@param player referência para uma instância de Player contra o qual será verificada a ocorrência de colisão da bola.
-		@return um valor booleano que indica a ocorrência (true) ou não (false) de colisão.
-	*/
 
 	public boolean checkCollision(Player player){
 		double top, bottom, left, right;
@@ -213,31 +153,15 @@ public class Ball {
 		return false;
 	}
 
-	/**
-		Método que devolve a coordenada x do centro do retângulo que representa a bola.
-		@return o valor double da coordenada x.
-	*/
-
 	public double getCx(){
 
 		return this.cx;
 	}
 
-	/**
-		Método que devolve a coordenada y do centro do retângulo que representa a bola.
-		@return o valor double da coordenada y.
-	*/
-
 	public double getCy(){
 
 		return this.cy;
 	}
-
-	/**
-		Método que devolve a velocidade da bola.
-		@return o valor double da velocidade.
-
-	*/
 
 	public double getSpeed(){
 
