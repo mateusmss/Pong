@@ -24,7 +24,8 @@ public class Ball {
 		this.direcaoY = this.direcaoRandom();
 
 	}
-	public double direcaoRandom(){
+	public double direcaoRandom()
+	{
 		Random random = new Random();
 		int randomINt = random.nextInt(2);
 		if(randomINt == 0){
@@ -75,14 +76,8 @@ public class Ball {
 	 @return um valor booleano que indica a ocorrência (true) ou não (false) de colisão.
 	 */
 
-	public boolean checkCollision(Wall wall){
-		//String id;
-		//Double Wx, Wy, Height, Width;
-		//id = wall.getId();
-		//Wx = wall.getCx(); Wy = wall.getCy();
-		//Height = wall.getHeight(); Width = wall.getWidth();
-
-		System.out.println(wall.getId());
+	public boolean checkCollision(Wall wall)
+	{
 
 		if(wall.getId().equals("Top"))
 		{
@@ -113,12 +108,11 @@ public class Ball {
 				return true;
 		}
 
-		//verificar a posiç�o e calcular a presença ou n�o da bola dentro do espaço ocupado pela parede
-
 		return false;
 	}
 
-	public boolean checkCollision(Player player){
+	public boolean checkCollision(Player player)
+	{
 		double top, bottom, left, right;
 		double pTop, pBottom, pLeft, pRight;
 
