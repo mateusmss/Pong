@@ -83,42 +83,46 @@ public class Ball {
 	*/
 
 	public boolean checkCollision(Wall wall){
-		String id;
-		Double Wx, Wy, Height, Width;
-		id = wall.getId();
-		Wx = wall.getCx(); Wy = wall.getCy();
-		Height = wall.getHeight(); Width = wall.getWidth();
+		//String id;
+		//Double Wx, Wy, Height, Width;
+		//id = wall.getId();
+		//Wx = wall.getCx(); Wy = wall.getCy();
+		//Height = wall.getHeight(); Width = wall.getWidth();
 
-		switch (id)
+		System.out.println(wall.getId());
+
+		if(wall.getId().equals("Top"))
 		{
-			case "Bottom":
-				double bottom = this.cy + (this.height / 2);
-				double wTop = wall.getCy() - (wall.getHeight() / 2);
-				if(bottom >= wTop)
-					return true;
-
-			case "Top":
-				double top = this.cy - (this.height / 2);
-				double wBottom = wall.getCy() + (wall.getHeight() / 2);
-				if(top <= wBottom)
-					return true;
-
-			case "Right":
-				double right = this.cx + (this.width / 2);
-				double wLeft = wall.getCx() - (wall.getWidth() / 2);
-				if(right >= wLeft)
-					return true;
-
-			case "Left":
-				double left = this.cx - (this.height / 2);
-				double wRight = wall.getCx() + (wall.getWidth() / 2);
-				if(left <= wRight)
-					return true;
+			double top = cy - height/2;
+			double wBottom = wall.getCy() + wall.getHeight()/2;
+			if(top <= wBottom)
+				return true;
+		}
+		if(wall.getId().equals("Bottom"))
+		{
+			double bottom = cy + height/2;
+			double wTop = wall.getCy() - wall.getHeight()/2;
+			if(bottom >= wTop)
+				return true;
+		}
+		if(wall.getId().equals("Left"))
+		{
+			double left = cy + height/2;
+			double wRight = wall.getCx() + wall.getWidth()/2;
+			if(left <= wRight)
+				return true;
+		}
+		if(wall.getId().equals("Right"))
+		{
+			double right = this.cx + this.width/2;
+			double wLeft = wall.getCx() - wall.getWidth()/2;
+			if(right >= wLeft)
+				return true;
 		}
 
 		//verificar a posiç�o e calcular a presença ou n�o da bola dentro do espaço ocupado pela parede
 
-		return false;*/
+		return false;
 	}
 
 	public boolean checkCollision(Player player){
