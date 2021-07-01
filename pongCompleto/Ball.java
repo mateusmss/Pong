@@ -54,33 +54,26 @@ public class Ball {
 	}
 
 	/**
-		Método chamado quando detecta-se uma colisão da bola com uma parede.
-		Aqui vamos verificar se o player está colidindo com a bola e caso verdadeira atualizamos a velocidade da bola
-		de maneira positiva, caso contrário de maneira negativa.
-		@param wallId uma string cujo conteúdo identifica uma das paredes da quadra.
-	*/
+	 Método chamado quando detecta-se uma colisão da bola com uma parede.
+	 Aqui vamos verificar se o player está colidindo com a bola e caso verdadeira atualizamos a velocidade da bola
+	 de maneira positiva, caso contrário de maneira negativa.
+	 @param wallId uma string cujo conteúdo identifica uma das paredes da quadra.
+	 */
 
 	public void onWallCollision(String wallId)
 	{
-		switch (wallId)
-		{
-			case "Top":
-				this.direcaoY = Math.abs(this.speed);
-			case "Bottom":
-				this.direcaoY = - Math.abs(this.speed);
-			case "Left":
-				this.direcaoX = Math.abs(this.speed);
-			case "Right":
-				this.direcaoX = - Math.abs(this.speed);
-		}
+		if(wallId.equals("Top")) this.direcaoY = Math.abs(this.speed);
+		if(wallId.equals("Bottom")) this.direcaoY = -Math.abs(this.speed);
+		if(wallId.equals("Left")) this.direcaoX = Math.abs(this.speed);
+		if(wallId.equals("Right")) this.direcaoX = -Math.abs(this.speed);
 	}
 
 	/**
-		Método que verifica se houve colisão da bola com uma parede.
+	 Método que verifica se houve colisão da bola com uma parede.
 
-		@param wall referência para uma instância de Wall contra a qual será verificada a ocorrência de colisão da bola.
-		@return um valor booleano que indica a ocorrência (true) ou não (false) de colisão.
-	*/
+	 @param wall referência para uma instância de Wall contra a qual será verificada a ocorrência de colisão da bola.
+	 @return um valor booleano que indica a ocorrência (true) ou não (false) de colisão.
+	 */
 
 	public boolean checkCollision(Wall wall){
 		//String id;
@@ -107,7 +100,7 @@ public class Ball {
 		}
 		if(wall.getId().equals("Left"))
 		{
-			double left = cy + height/2;
+			double left = cx + height/2;
 			double wRight = wall.getCx() + wall.getWidth()/2;
 			if(left <= wRight)
 				return true;
@@ -172,8 +165,8 @@ public class Ball {
 		return this.speed;
 	}
 /**
-Vídeos utilizados para fazer o algoritmo
-https://www.youtube.com/watch?v=EeYJCV-A2hw
-https://youtu.be/oLirZqJFKPE
-*/
+ Vídeos utilizados para fazer o algoritmo
+ https://www.youtube.com/watch?v=EeYJCV-A2hw
+ https://youtu.be/oLirZqJFKPE
+ */
 }
